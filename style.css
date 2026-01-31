@@ -759,9 +759,54 @@ button:focus:not(:focus-visible) {
     color: white;
 }
 
+/* --- Theme Toggle Button --- */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-accent-subtle);
+    color: var(--color-accent);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    margin-left: var(--space-md);
+}
+
+.theme-toggle:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon,
+.theme-toggle .icon-system {
+    display: none;
+}
+
+/* Show appropriate icon based on theme */
+[data-theme="light"] .theme-toggle .icon-sun {
+    display: block;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+    display: block;
+}
+
+/* System mode (no data-theme attribute) */
+:root:not([data-theme]) .theme-toggle .icon-system {
+    display: block;
+}
+
 /* --- Dark Mode (Warm Palette) --- */
+/* System preference dark mode */
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
         /* Warm dark mode colors */
         --color-bg: #1a1612;
         --color-bg-alt: #231e19;
@@ -781,49 +826,113 @@ button:focus:not(:focus-visible) {
     }
     
     /* Header adjustments for dark mode */
-    .header {
+    :root:not([data-theme="light"]) .header {
         background-color: rgba(26, 22, 18, 0.8);
     }
     
-    .header--scrolled {
+    :root:not([data-theme="light"]) .header--scrolled {
         background-color: rgba(26, 22, 18, 0.95);
     }
     
     /* Footer adjustments for dark mode */
-    .footer {
+    :root:not([data-theme="light"]) .footer {
         background-color: #0f0d0b;
     }
     
-    .footer-brand .logo-text,
-    .footer-column h3 {
+    :root:not([data-theme="light"]) .footer-brand .logo-text,
+    :root:not([data-theme="light"]) .footer-column h3 {
         color: #f5f0eb;
     }
     
-    .footer-brand p,
-    .footer-column a {
+    :root:not([data-theme="light"]) .footer-brand p,
+    :root:not([data-theme="light"]) .footer-column a {
         color: rgba(245, 240, 235, 0.6);
     }
     
-    .footer-column a:hover {
+    :root:not([data-theme="light"]) .footer-column a:hover {
         color: #f5f0eb;
     }
     
-    .footer-bottom {
+    :root:not([data-theme="light"]) .footer-bottom {
         border-top-color: rgba(245, 240, 235, 0.1);
     }
     
-    .footer-bottom p {
+    :root:not([data-theme="light"]) .footer-bottom p {
         color: rgba(245, 240, 235, 0.4);
     }
     
     /* Form inputs for dark mode */
-    .form-group input,
-    .form-group textarea {
+    :root:not([data-theme="light"]) .form-group input,
+    :root:not([data-theme="light"]) .form-group textarea {
         color: var(--color-text);
     }
     
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
+    :root:not([data-theme="light"]) .form-group input::placeholder,
+    :root:not([data-theme="light"]) .form-group textarea::placeholder {
         color: var(--color-text-muted);
     }
+}
+
+/* Manual dark mode override */
+[data-theme="dark"] {
+    /* Warm dark mode colors */
+    --color-bg: #1a1612;
+    --color-bg-alt: #231e19;
+    --color-text: #f5f0eb;
+    --color-text-muted: #b8a99a;
+    --color-text-light: #9a8b7c;
+    --color-accent: #d4a574;
+    --color-accent-light: #e6c9a8;
+    --color-accent-subtle: rgba(212, 165, 116, 0.12);
+    --color-border: #3d352d;
+    --color-border-light: #2d2620;
+    
+    /* Adjusted shadows for dark mode */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .header {
+    background-color: rgba(26, 22, 18, 0.8);
+}
+
+[data-theme="dark"] .header--scrolled {
+    background-color: rgba(26, 22, 18, 0.95);
+}
+
+[data-theme="dark"] .footer {
+    background-color: #0f0d0b;
+}
+
+[data-theme="dark"] .footer-brand .logo-text,
+[data-theme="dark"] .footer-column h3 {
+    color: #f5f0eb;
+}
+
+[data-theme="dark"] .footer-brand p,
+[data-theme="dark"] .footer-column a {
+    color: rgba(245, 240, 235, 0.6);
+}
+
+[data-theme="dark"] .footer-column a:hover {
+    color: #f5f0eb;
+}
+
+[data-theme="dark"] .footer-bottom {
+    border-top-color: rgba(245, 240, 235, 0.1);
+}
+
+[data-theme="dark"] .footer-bottom p {
+    color: rgba(245, 240, 235, 0.4);
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+    color: var(--color-text);
+}
+
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder {
+    color: var(--color-text-muted);
 }
