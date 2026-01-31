@@ -277,7 +277,6 @@ h3 {
 
 .hero h1 {
     margin-bottom: var(--space-lg);
-    color: var(--color-text);
 }
 
 .hero-subtitle {
@@ -390,7 +389,6 @@ h3 {
 
 .service-card h3 {
     margin-bottom: var(--space-sm);
-    color: var(--color-text);
 }
 
 .service-card p {
@@ -443,7 +441,6 @@ h3 {
 
 .why-list strong {
     font-weight: 600;
-    color: var(--color-text);
 }
 
 .why-list span {
@@ -760,4 +757,68 @@ button:focus:not(:focus-visible) {
 ::selection {
     background-color: var(--color-accent);
     color: white;
+}
+
+/* --- Dark Mode (Warm Palette) --- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Warm dark mode colors */
+        --color-bg: #1a1612;
+        --color-bg-alt: #231e19;
+        --color-text: #f5f0eb;
+        --color-text-muted: #b8a99a;
+        --color-text-light: #9a8b7c;
+        --color-accent: #d4a574;
+        --color-accent-light: #e6c9a8;
+        --color-accent-subtle: rgba(212, 165, 116, 0.12);
+        --color-border: #3d352d;
+        --color-border-light: #2d2620;
+        
+        /* Adjusted shadows for dark mode */
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Header adjustments for dark mode */
+    .header {
+        background-color: rgba(26, 22, 18, 0.8);
+    }
+    
+    .header--scrolled {
+        background-color: rgba(26, 22, 18, 0.95);
+    }
+    
+    /* Footer adjustments for dark mode */
+    .footer {
+        background-color: #0f0d0b;
+    }
+    
+    .footer-brand p,
+    .footer-column a {
+        color: rgba(245, 240, 235, 0.6);
+    }
+    
+    .footer-column a:hover {
+        color: var(--color-text);
+    }
+    
+    .footer-bottom {
+        border-top-color: rgba(245, 240, 235, 0.1);
+    }
+    
+    .footer-bottom p {
+        color: rgba(245, 240, 235, 0.4);
+    }
+    
+    /* Form inputs for dark mode */
+    .form-group input,
+    .form-group textarea {
+        color: var(--color-text);
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: var(--color-text-muted);
+    }
 }
