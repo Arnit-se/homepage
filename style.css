@@ -794,13 +794,18 @@ button:focus:not(:focus-visible) {
         background-color: #0f0d0b;
     }
     
+    .footer-brand .logo-text,
+    .footer-column h3 {
+        color: #f5f0eb;
+    }
+    
     .footer-brand p,
     .footer-column a {
         color: rgba(245, 240, 235, 0.6);
     }
     
     .footer-column a:hover {
-        color: var(--color-text);
+        color: #f5f0eb;
     }
     
     .footer-bottom {
