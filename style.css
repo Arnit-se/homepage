@@ -5,8 +5,19 @@
     --muted: #5c5a52;
 }
 
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --background: #1a1917;
+    --foreground: #f2efe8;
+    --muted: #bcb8ae;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+}
+
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
         --background: #1a1917;
         --foreground: #f2efe8;
         --muted: #bcb8ae;
@@ -44,4 +55,50 @@ a {
 a:hover,
 a:focus-visible {
     color: var(--foreground);
+}
+
+.theme-toggle {
+    position: fixed;
+    inset-block-start: 1rem;
+    inset-inline-end: 1rem;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.theme-toggle:not([hidden]) {
+    display: grid;
+}
+
+.theme-toggle:hover {
+    border-color: currentColor;
+    color: var(--foreground);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.theme-toggle svg {
+    display: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+[data-theme="system"] .icon-system,
+[data-theme="light"] .icon-sun,
+[data-theme="dark"] .icon-moon {
+    display: block;
 }
